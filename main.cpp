@@ -68,7 +68,7 @@ bool checkIfMultiplyDivide(string complexNumber) {
 
 void extractNumbersIfPlusMinus(string complexNumber) {
 
-    char mainSign;
+//    char mainSign;
     int mainSignIndex;
 
     mainSignIndex = complexNumber.find(")+(");
@@ -88,7 +88,7 @@ void extractNumbersIfPlusMinus(string complexNumber) {
             // minus
         } else {
 
-            mainSign = complexNumber[mainSignIndex + 1];
+//            mainSign = complexNumber[mainSignIndex + 1];
 
             string firstPart = complexNumber.substr(1, mainSignIndex - 1);
             string secondPart = complexNumber.substr(mainSignIndex + 3, complexNumber.length() - mainSignIndex - 4);
@@ -106,7 +106,7 @@ void extractNumbersIfPlusMinus(string complexNumber) {
         // plus
     } else {
 
-        mainSign = complexNumber[mainSignIndex + 1];
+//        mainSign = complexNumber[mainSignIndex + 1];
 
         string firstPart = complexNumber.substr(1, mainSignIndex - 1);
         string secondPart = complexNumber.substr(mainSignIndex + 3, complexNumber.length() - mainSignIndex - 4);
@@ -125,7 +125,7 @@ void extractNumbersIfPlusMinus(string complexNumber) {
 
 void extractNumbersIfMultiplyDivide(string complexNumber) {
 
-    char mainSign;
+//    char mainSign;
     int mainSignIndex;
 
     mainSignIndex = complexNumber.find(")*(");
@@ -145,7 +145,7 @@ void extractNumbersIfMultiplyDivide(string complexNumber) {
             // divide
         } else {
 
-            mainSign = complexNumber[mainSignIndex + 1];
+//            mainSign = complexNumber[mainSignIndex + 1];
 
             string firstPart = complexNumber.substr(1, mainSignIndex - 1);
             string secondPart = complexNumber.substr(mainSignIndex + 3, complexNumber.length() - mainSignIndex - 4);
@@ -163,7 +163,7 @@ void extractNumbersIfMultiplyDivide(string complexNumber) {
         // multiply
     } else {
 
-        mainSign = complexNumber[mainSignIndex + 1];
+//        mainSign = complexNumber[mainSignIndex + 1];
 
         string firstPart = complexNumber.substr(1, mainSignIndex - 1);
         string secondPart = complexNumber.substr(mainSignIndex + 3, complexNumber.length() - mainSignIndex - 4);
