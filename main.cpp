@@ -6,25 +6,22 @@ using namespace std;
 int indexOf(string arr, char character);
 bool checkIfPlusMinus(string complexNumber);
 bool checkIfMultiplyDivide(string complexNumber);
+void extractNumbersIfPlusMinus(string complexNumber);
+void getFirstPartNumbers(string firstPart, double& real1, double& imag1);
+void getSecondPartNumbers(string secondPart, double& real2, double& imag2);
+
+string complexNum = "(4421142-978883i)-(4421142+978883i)";
+string complexNum2 = "(42-9i)+(404+971i)";
+
+double real1, real2, imag1, imag2;
 
 int main() {
 
-    string complexNum = "(4421142-978883i)/(4421142+978883i)";
+    if (checkIfPlusMinus(complexNum2)){
 
-//    int x = complexNum.find("-");
-//
-//
-//    string real = complexNum.substr(0, x);
-//
-//    cout << real << endl;
-//
-//    string imag = complexNum.substr(x, indexOf(complexNum, 'i') - x);
-//
-//    cout << imag << endl;
+        extractNumbersIfPlusMinus(complexNum2);
 
-    if (checkIfPlusMinus(complexNum)){
-        cout << "Plus Minus";
-    }else if(checkIfMultiplyDivide(complexNum)){
+    }else if(checkIfMultiplyDivide(complexNum2)){
         cout << "Multiply divide";
     }
 
@@ -56,4 +53,132 @@ bool checkIfMultiplyDivide(string complexNumber){
     regex complexCheckMultiplyDivide ("[(][+-]*[0-9]+(.[0-9]+)*[+-]+[0-9]+i[)][*/][(][+-]*[0-9]+(.[0-9]+)*[+-]+[0-9]+i[)]");
 
     return regex_match(complexNumber, complexCheckMultiplyDivide);
+}
+
+
+void extractNumbersIfPlusMinus(string complexNumber){
+
+    char mainSign;
+    int mainSignIndex;
+    int innerSignIndex1;
+    int innerSignIndex2;
+
+    mainSignIndex = complexNumber.find(")+(");
+
+    // not plus
+    if (mainSignIndex == -1){
+
+        mainSignIndex = complexNumber.find(")-(");
+
+        // not minus
+        if (mainSignIndex == -1){
+
+            // take input again
+
+            cout << "Invalid";
+
+        // minus
+        }else{
+
+            mainSign = complexNumber[mainSignIndex + 1];
+
+            string firstPart = complexNumber.substr(1, mainSignIndex - 1);
+            string secondPart = complexNumber.substr(mainSignIndex + 3, complexNumber.length() - mainSignIndex - 4);
+
+//            cout << firstPart << endl;
+//            cout << secondPart << endl;
+
+            getFirstPartNumbers(firstPart, real1, imag1);
+            getSecondPartNumbers(secondPart, real2, imag2);
+
+            // subtraction function here
+
+        }
+
+    // plus
+    }else{
+
+        mainSign = complexNumber[mainSignIndex + 1];
+
+        string firstPart = complexNumber.substr(1, mainSignIndex - 1);
+        string secondPart = complexNumber.substr(mainSignIndex + 3, complexNumber.length() - mainSignIndex - 4);
+
+//            cout << firstPart << endl;
+//            cout << secondPart << endl;
+
+        getFirstPartNumbers(firstPart, real1, imag1);
+        getSecondPartNumbers(secondPart, real2, imag2);
+
+        // addition function here
+
+    }
+
+}
+
+void getFirstPartNumbers(string firstPart, double& real1, double& imag1){
+
+    int signIndex;
+
+    signIndex = firstPart.find("-");
+
+    if (signIndex == -1){
+
+        signIndex = firstPart.find("+");
+
+        string real = firstPart.substr(0, signIndex);
+        string imag = firstPart.substr(signIndex + 1, indexOf(firstPart, 'i') - signIndex - 1);
+
+        cout << real << endl;
+        cout << imag << endl;
+
+        real1 = stod(real);
+        imag1 = stod(imag);
+
+    }else{
+
+        string real = firstPart.substr(0, signIndex);
+        string imag = firstPart.substr(signIndex, indexOf(firstPart, 'i') - signIndex);
+
+        cout << real << endl;
+        cout << imag << endl;
+
+        real1 = stod(real);
+        imag1 = stod(imag);
+
+    }
+
+}
+
+void getSecondPartNumbers(string secondPart, double& real2, double& imag2){
+
+    int signIndex;
+
+    signIndex = secondPart.find("-");
+
+    if (signIndex == -1){
+
+        signIndex = secondPart.find("+");
+
+        string real = secondPart.substr(0, signIndex);
+        string imag = secondPart.substr(signIndex + 1, indexOf(secondPart, 'i') - signIndex - 1);
+
+        cout << real << endl;
+        cout << imag << endl;
+
+        real2 = stod(real);
+        imag2 = stod(imag);
+
+    }else{
+
+        string real = secondPart.substr(0, signIndex);
+        string imag = secondPart.substr(signIndex, indexOf(secondPart, 'i') - signIndex);
+
+        cout << real << endl;
+        cout << imag << endl;
+
+        real2 = stod(real);
+        imag2 = stod(imag);
+
+    }
+
 }
