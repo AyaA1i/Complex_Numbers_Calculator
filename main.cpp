@@ -5,6 +5,7 @@
 Program Name: Complex Number Calculator
 Description: This program takes complex numbers in the form "(a+bi)+(c+di)" and calculates the entered problem.
 Purpose: Make operations on complex numbers
+Author: Youssef Moataz
 Last Modification Date: March 23, 2022.
 Version: v1.4.0
 
