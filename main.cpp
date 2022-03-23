@@ -1,9 +1,20 @@
-// Header
+/*
+--FCAI_CU - Programming 1 - 2022 - Assignment 2--
+
+Program Name: Complex Number Calculator
+Description: This program takes complex numbers in the form "(a+bi)+(c+di)" and calculates the entered problem.
+Purpose: Make operations on complex numbers
+Last Modification Date: March 23, 2022.
+Version: v1.4.0
+
+*/
 
 #include <iostream>
 #include <regex>
 
 using namespace std;
+
+void getInput();
 
 int indexOf(string arr, char character);
 
@@ -26,17 +37,35 @@ double real1, real2, imag1, imag2;
 
 int main() {
 
-    if (checkIfPlusMinus(complexNum2)) {
+    cout << "\n*** Welcome to our Complex Numbers Calculator, we hope it helps you. ***\n\n";
 
-        extractNumbersIfPlusMinus(complexNum2);
+    getInput();
 
-    } else if (checkIfMultiplyDivide(complexNum2)) {
+    return 0;
+}
 
-        extractNumbersIfMultiplyDivide(complexNum2);
+void getInput(){
+
+    cout << "Please enter the complex numbers in the form \"(a+bi)+(c+di)\"" << endl;
+    cout << " -Only digits and signs and letter i (lower case) is allowed" << endl;
+    cout << " -Without any spaces" << endl;
+
+    string userComplexNumber;
+
+    getline(cin, userComplexNumber);
+
+    if (checkIfPlusMinus(userComplexNumber)) {
+
+        extractNumbersIfPlusMinus(userComplexNumber);
+
+    } else if (checkIfMultiplyDivide(userComplexNumber)) {
+
+        extractNumbersIfMultiplyDivide(userComplexNumber);
 
     }
 
-    return 0;
+    getInput();
+
 }
 
 int indexOf(string arr, char character) {
