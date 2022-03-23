@@ -32,8 +32,8 @@ void getFirstPartNumbers(string firstPart, double &real1, double &imag1);
 
 void getSecondPartNumbers(string secondPart, double &real2, double &imag2);
 
-string complexNum = "(-4421142-978883i)*(4421142+978883i)";
-string complexNum2 = "(42+9i)+(-404+971i)";
+//string complexNum = "(-4421142-978883i)*(4421142+978883i)";
+//string complexNum2 = "(42+9i)+(-404+971i)";
 
 double real1, real2, imag1, imag2;
 
@@ -46,11 +46,12 @@ int main() {
     return 0;
 }
 
-void getInput(){
+void getInput() {
 
     cout << "Please enter the complex numbers in the form \"(a+bi)+(c+di)\"" << endl;
     cout << " -Only digits and signs and letter i (lower case) is allowed" << endl;
     cout << " -Without any spaces" << endl;
+    cout << "Type \"Exit\" to exit" << endl;
 
     string userComplexNumber;
 
@@ -64,6 +65,8 @@ void getInput(){
 
         extractNumbersIfMultiplyDivide(userComplexNumber);
 
+    } else if (userComplexNumber == "Exit"){
+        exit(0);
     }
 
     getInput();
@@ -114,15 +117,14 @@ void extractNumbersIfPlusMinus(string complexNumber) {
         // not minus
         if (mainSignIndex == -1) {
 
-            // take input again
-
-            cout << "Invalid";
+            getInput();
 
             // minus
         } else {
 
 //            mainSign = complexNumber[mainSignIndex + 1];
 
+            // (a+bi)+(c+di)
             string firstPart = complexNumber.substr(1, mainSignIndex - 1);
             string secondPart = complexNumber.substr(mainSignIndex + 3, complexNumber.length() - mainSignIndex - 4);
 
