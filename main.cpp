@@ -36,6 +36,10 @@ void add(double real1, double imag1, double real2, double imag2);
 
 void sub(double real1, double imag1, double real2, double imag2);
 
+void multiplication(double &real1, double &real2, double &imag1,double &imag2);
+
+void division(double &real1, double &real2, double &imag1,double &imag2);
+
 //string complexNum = "(-4421142-978883i)*(4421142+978883i)";
 //string complexNum2 = "(42+9i)+(-404+971i)";
 
@@ -183,7 +187,7 @@ void extractNumbersIfMultiplyDivide(string complexNumber) {
 
             getInput();
 
-            // divide
+            //divide
         } else {
 
 //            mainSign = complexNumber[mainSignIndex + 1];
@@ -197,7 +201,7 @@ void extractNumbersIfMultiplyDivide(string complexNumber) {
             getFirstPartNumbers(firstPart, real1, imag1);
             getSecondPartNumbers(secondPart, real2, imag2);
 
-            // division function here
+            division(real1,real2,imag1,imag2);
 
         }
 
@@ -215,7 +219,7 @@ void extractNumbersIfMultiplyDivide(string complexNumber) {
         getFirstPartNumbers(firstPart, real1, imag1);
         getSecondPartNumbers(secondPart, real2, imag2);
 
-        // multiplication function here
+        multiplication(real1,real2,imag1,imag2);
 
     }
 
@@ -312,4 +316,22 @@ void sub(double real1, double imag1, double real2, double imag2) {
         cout << real << "+" << imag << "i" << endl;
     }
 
+}
+void multiplication(double &real1, double &real2, double &imag1,double &imag2){
+    double real=(real1*real2)-(imag1*imag2);
+    double imag=(real1*imag2)+(real2*imag1);
+    if(imag>0){
+        cout<<real<<"+"<<imag<<"i"<<endl;
+    }else{
+        cout<<real<<imag<<"i"<<endl;
+    }
+}
+void division(double &real1, double &real2, double &imag1,double &imag2){
+    double real=((real1*real2)+(imag1*imag2))/((real2*real2)+(imag2*imag2));
+    double imag=(((real1*(-imag2))+(imag1*real2))/(((real2*real2))+(imag2*imag2)));
+    if(imag>0){
+        cout<<real<<"+"<<imag<<"i"<<endl;
+    }else{
+        cout<<real<<imag<<"i"<<endl;
+    }
 }
