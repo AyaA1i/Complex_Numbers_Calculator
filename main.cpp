@@ -34,6 +34,8 @@ void getSecondPartNumbers(string secondPart, double &real2, double &imag2);
 
 void add(double real1, double imag1, double real2, double imag2);
 
+void sub(double real1, double imag1, double real2, double imag2);
+
 //string complexNum = "(-4421142-978883i)*(4421142+978883i)";
 //string complexNum2 = "(42+9i)+(-404+971i)";
 
@@ -137,6 +139,8 @@ void extractNumbersIfPlusMinus(string complexNumber) {
             getSecondPartNumbers(secondPart, real2, imag2);
 
             // subtraction function here
+
+            sub(real1, imag1, real2, imag2);
 
         }
 
@@ -289,6 +293,18 @@ void add(double real1, double imag1, double real2, double imag2) {
 
     double real = (real1 + real2);
     double imag = (imag1 + imag2);
+
+    if (imag < 0){
+        cout << real << imag << "i" << endl;
+    }else{
+        cout << real << "+" << imag << "i" << endl;
+    }
+
+}
+
+void sub(double real1, double imag1, double real2, double imag2) {
+    double real = (real1 - real2);
+    double imag = (imag1 - imag2);
 
     if (imag < 0){
         cout << real << imag << "i" << endl;
